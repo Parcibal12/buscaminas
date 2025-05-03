@@ -1,6 +1,6 @@
 # Fase 1: Construcción/Publicación
 # Usa una imagen SDK de .NET (ajusta la versión si usas una diferente, ej: 7.0, 8.0)
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build # <-- Cambiado a 8.0
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
 # Copia los archivos .csproj y restaura las dependencias
@@ -17,7 +17,7 @@ RUN dotnet publish Buscaminas.Api.csproj -c Release -o /app/publish
 
 # Fase 2: Ejecución
 # Usa una imagen de runtime de ASP.NET más ligera (ajusta la versión si es necesario)
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final # <-- Cambiado a 8.0
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final # <-- Puedes dejar este comentario o quitarlo también si prefieres
 WORKDIR /app
 COPY --from=build /app/publish .
 
