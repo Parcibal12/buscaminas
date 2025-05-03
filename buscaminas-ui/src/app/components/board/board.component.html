@@ -1,0 +1,45 @@
+<!-- Contenedor principal que se muestra solo si 'game' tiene datos -->
+<div *ngIf="game">
+  <!-- Mensaje de juego perdido -->
+  <div *ngIf="game.isGameOver && !game.isWon" class="game-over-message">
+    ¡Boom! Has perdido...
+  </div>
+  <!-- Mensaje de juego ganado -->
+  <div *ngIf="game.isWon" class="game-won-message">
+    ¡Felicidades! Ganaste
+  </div>
+
+  <!-- Contenedor de la cuadrícula del tablero -->
+  <div class="board-grid"
+       [style.gridTemplateColumns]="'repeat(' + (game.board[0]?.length || 0) + ', 30px)'"> <!-- Navegación segura añadida -->
+    <!-- Itera sobre las filas del tablero -->
+    <div *ngFor="let row of game.board; let i = index" class="board-row">
+      <!-- Itera sobre las celdas de cada fila -->
+      <button
+        *ngFor="let cell of row; let j = index"
+        class="cell"
+        [ngClass]="getCellClass(cell)"
+        (click)="revealCell(i, j)"
+        (contextmenu)="flagCell(i, j, $event)"
+        [disabled]="game.isGameOver || cell.isRevealed"> <!-- Asegúrate que la etiqueta de apertura cierra aquí con '>' -->
+        <!-- Contenido de la celda -->
+        <!-- Muestra el número de minas adyacentes si la celda está revelada, no es mina y tiene minas cerca -->
+        <span *ngIf="cell.isRevealed && !cell.isMine && cell.adjacentMines > 0">
+          {{ cell.adjacentMines }}
+        </span>
+        <!-- Muestra una bomba si la celda está revelada y es una mina -->
+        <span *ngIf="cell.isRevealed && cell.isMine">💣</span>
+        <!-- Muestra una bandera si la celda no está revelada pero tiene una bandera -->
+        <span *ngIf="!cell.isRevealed && cell.isFlagged">🚩</span>
+        <!-- Si no se cumple ninguna condición anterior, el botón estará vacío (celda oculta) -->
+      </button> <!-- Etiqueta de cierre del botón -->
+    </div>
+  </div>
+  <!-- Botón para iniciar un nuevo juego -->
+  <button (click)="newGame()">Nuevo Juego</button>
+</div>
+
+<!-- Mensaje que se muestra mientras 'game' es null (cargando) -->
+<div *ngIf="!game">
+  Cargando juego...
+</div>

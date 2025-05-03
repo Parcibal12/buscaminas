@@ -1,0 +1,87 @@
+.board-grid {
+  display: grid; /* Usa CSS Grid para el layout */
+  gap: 1px; /* Espacio entre celdas */
+  background-color: #ccc; /* Color de fondo para los espacios */
+  border: 1px solid #999; /* Borde del tablero */
+  width: fit-content; /* Ajusta el ancho al contenido */
+  margin: 20px auto; /* Centra el tablero en la página */
+}
+
+.board-row {
+   display: contents; /* Permite que los botones sean hijos directos del grid */
+}
+
+.cell {
+  width: 30px; /* Ancho fijo de celda */
+  height: 30px; /* Alto fijo de celda */
+  border: 1px solid #999; /* Borde sutil para cada celda */
+  background-color: #ddd; /* Color de fondo para celdas ocultas */
+  display: flex; /* Centra el contenido de la celda */
+  justify-content: center;
+  align-items: center;
+  font-weight: bold; /* Texto en negrita */
+  font-size: 14px; /* Tamaño de fuente */
+  cursor: pointer; /* Cursor de mano sobre celdas ocultas */
+  box-sizing: border-box; /* Asegura que padding/border estén incluidos en width/height */
+  padding: 0; /* Quita padding por defecto del botón */
+  vertical-align: middle; /* Alineación vertical (útil para emojis/texto) */
+  color: black; /* Color de texto por defecto */
+
+  &:hover:not(:disabled) { /* Efecto hover solo si no está deshabilitada */
+    background-color: #eee;
+  }
+
+  &.hidden {
+     /* Estilos específicos para celdas ocultas (ya definidos arriba) */
+  }
+
+  &.revealed {
+    background-color: #bbb; /* Color de fondo para celdas reveladas (sin mina) */
+    cursor: default; /* Cursor normal para celdas reveladas */
+  }
+
+  &.mine {
+    background-color: red; /* Fondo rojo para minas explotadas */
+    cursor: default;
+  }
+
+   &.flagged {
+     background-color: #ddd; /* Mantiene el fondo de celda oculta */
+     cursor: pointer; /* Mantiene el cursor de mano */
+     /* El contenido (🚩) se muestra mediante el HTML */
+   }
+
+  /* Colores para los números de minas adyacentes */
+  &.adjacent-1 { color: blue; }
+  &.adjacent-2 { color: green; }
+  &.adjacent-3 { color: red; }
+  &.adjacent-4 { color: purple; }
+  &.adjacent-5 { color: maroon; }
+  &.adjacent-6 { color: turquoise; }
+  &.adjacent-7 { color: black; }
+  &.adjacent-8 { color: gray; }
+
+   &:disabled { /* Estilos para celdas deshabilitadas (reveladas o juego terminado) */
+     cursor: default;
+     opacity: 0.8; /* Ligeramente transparente */
+   }
+}
+
+/* Estilos para los mensajes de estado del juego */
+.game-over-message, .game-won-message {
+    text-align: center;
+    margin: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.game-over-message { color: red; }
+.game-won-message { color: green; }
+
+/* Estilos para el botón de Nuevo Juego */
+button:not(.cell) { /* Aplica solo al botón que NO es una celda */
+  display: block; /* Hace que ocupe su propia línea */
+  margin: 20px auto; /* Centra el botón */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 1em; /* Tamaño de fuente */
+  cursor: pointer; /* Cursor de mano */
+}

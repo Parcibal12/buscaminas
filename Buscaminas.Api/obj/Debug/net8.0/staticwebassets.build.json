@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "WloRC4oo0cgOFrg5veOejtlqtCRZV8VnwXynGb/D88s=",
+  "Source": "Minesweeper.Api",
+  "BasePath": "_content/Minesweeper.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
