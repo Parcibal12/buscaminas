@@ -12,8 +12,8 @@ RUN dotnet restore
 COPY . ./
 
 # Publica la aplicación para producción
-# Asegúrate de que el nombre del proyecto (Buscaminas.Api.csproj) sea correcto
-RUN dotnet publish Buscaminas.Api.csproj -c Release -o /app/publish
+# Asegúrate de que el nombre del proyecto (Minesweeper.Api.csproj) sea correcto
+RUN dotnet publish Minesweeper.Api.csproj -c Release -o /app/publish # <-- Nombre corregido aquí
 
 # Fase 2: Ejecución
 # Usa una imagen de runtime de ASP.NET más ligera (ajusta la versión si es necesario)
@@ -25,5 +25,5 @@ COPY --from=build /app/publish .
 EXPOSE 80
 
 # Define el punto de entrada para ejecutar la aplicación
-# Asegúrate de que el nombre del archivo DLL (Buscaminas.Api.dll) sea correcto
-ENTRYPOINT ["dotnet", "Buscaminas.Api.dll"]
+# Asegúrate de que el nombre del archivo DLL (Minesweeper.Api.dll) sea correcto
+ENTRYPOINT ["dotnet", "Minesweeper.Api.dll"] # <-- Verifica también este nombre DLL
