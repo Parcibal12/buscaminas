@@ -64,3 +64,4 @@ C:\Users\IDEAPAD GAMING\buscaminas\Buscaminas.Api\obj\Debug\net8.0\refint\Minesw
 C:\Users\IDEAPAD GAMING\buscaminas\Buscaminas.Api\obj\Debug\net8.0\Minesweeper.Api.pdb
 C:\Users\IDEAPAD GAMING\buscaminas\Buscaminas.Api\obj\Debug\net8.0\Minesweeper.Api.genruntimeconfig.cache
 C:\Users\IDEAPAD GAMING\buscaminas\Buscaminas.Api\obj\Debug\net8.0\ref\Minesweeper.Api.dll
+C:\Users\IDEAPAD GAMING\buscaminas\Buscaminas.Api\obj\Debug\net8.0\Minesweeper.Api.sourcelink.json
